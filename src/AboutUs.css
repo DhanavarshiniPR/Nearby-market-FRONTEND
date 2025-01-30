@@ -1,0 +1,143 @@
+.about-container {
+    text-align: center;
+    padding: 20px;
+    background: #f3f0fd; /* Light lavender background to match theme */
+  }
+  
+  .about-content h1 {
+    font-size: 2.5rem;
+    color: #8a55d4; /* Purple color for headings */
+    margin-bottom: 15px;
+  }
+  
+  .about-content p {
+    font-size: 1.2rem;
+    color: #6f4e99; /* Slightly darker purple for text */
+    margin-bottom: 30px;
+    width: 60%;
+    margin: auto;
+  }
+  
+  .about-sections {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 40px;
+  }
+  
+  .about-card {
+    background: rgb(240, 219, 243);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    transition: transform 0.3s ease;
+  }
+  
+  .about-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .about-card img {
+    width: 100%;
+    border-radius: 10px;
+  }
+  
+  .about-card h2 {
+    margin: 15px 0;
+    color: #8a55d4; /* Heading color matching theme */
+  }
+  
+  .explore-btn {
+    margin-top: 30px;
+    background: #7a42e7; /* Violet button background */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: 0.3s;
+  }
+  
+  .explore-btn:hover {
+    background: #5f2bc2; /* Darker violet on hover */
+    transform: scale(1.05); /* Button scaling effect */
+  }
+  .about-container {
+    text-align: center;
+    padding: 100px 20px 20px; /* Increased top padding to push content below navbar */
+    background: #f3f0fd; /* Light lavender background to match theme */
+}
+
+.about-content h1 {
+    font-size: 2.5rem;
+    color: #8a55d4; /* Purple color for headings */
+    margin-bottom: 15px;
+}
+
+.about-content p {
+    font-size: 1.2rem;
+    color: #6f4e99; /* Slightly darker purple for text */
+    margin-bottom: 30px;
+    width: 60%;
+    margin: auto;
+}
+
+.about-sections {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.about-card {
+    background: rgb(240, 219, 243);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    transition: transform 0.3s ease;
+}
+
+.about-card:hover {
+    transform: translateY(-5px);
+}
+
+.about-card img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.about-card h2 {
+    margin: 15px 0;
+    color: #8a55d4; /* Heading color matching theme */
+}
+
+.explore-btn {
+    margin-top: 30px;
+    background: #7a42e7; /* Violet button background */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: 0.3s;
+}
+
+.explore-btn:hover {
+    background: #5f2bc2; /* Darker violet on hover */
+    transform: scale(1.05); /* Button scaling effect */
+}
+
+/* Navbar Fix */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: white;
+    z-index: 1000;
+    padding: 15px 0;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}

@@ -1,0 +1,70 @@
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .payment-modal {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  }
+  
+  .payment-modal h2 {
+    font-size: 22px;
+    margin-bottom: 10px;
+  }
+  
+  .payment-modal p {
+    font-size: 18px;
+    color: #444;
+    margin-bottom: 15px;
+  }
+  
+  .payment-modal select,
+  .payment-modal input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .pay-btn {
+    background: #c58fd3;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  .pay-btn:hover {
+    background: #ab52e6;
+  }
+  
+  .close-btn {
+    margin-top: 10px;
+    background: #777;
+    color: white;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .success-message {
+    color: green;
+    font-weight: bold;
+    margin-top: 10px;
+  }
+  

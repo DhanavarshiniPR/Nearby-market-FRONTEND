@@ -1,0 +1,121 @@
+.contact-container {
+  text-align: center;
+  padding: 100px 20px 20px; /* Increased top padding to push content below navbar */
+  background: #f8f9fa;
+}
+
+.contact-content h1 {
+  font-size: 2.5rem;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.contact-content p {
+  font-size: 1.2rem;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  width: 50%;
+  margin: auto;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+.contact-form textarea {
+  height: 100px;
+}
+
+.contact-form button {
+  background: #dd82f0;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.contact-form button:hover {
+  background: #eb82f5;
+}
+
+.contact-info {
+  margin-top: 30px;
+}
+
+.contact-info h2 {
+  color: #333;
+}
+
+.contact-info p {
+  font-size: 1rem;
+  color: #555;
+}
+
+.faq-section {
+  margin-top: 40px;
+  text-align: left;
+  width: 60%;
+  margin: auto;
+}
+
+.faq-section h2 {
+  color: #333;
+}
+
+.faq-section details {
+  background: white;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.faq-section details summary {
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.faq-section details p {
+  margin-top: 5px;
+  font-size: 1rem;
+  color: #666;
+}
+
+.back-btn {
+  margin-top: 20px;
+  background: hsl(271, 61%, 59%);
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.back-btn:hover {
+  background: #ca8ee6;
+}
+
+/* Navbar Fix */
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: white;
+  z-index: 1000;
+  padding: 15px 0;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
