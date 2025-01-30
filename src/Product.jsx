@@ -1,36 +1,52 @@
-import React from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
-import './Product.css'; 
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import "./Product.css";  // Customize the CSS file as needed
 
 const Product = () => {
-  const { id } = useParams(); 
-  const navigate = useNavigate();
+  const [products, setProducts] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
-  const productDetails = {
-    1: { name: 'Smartphone', description: 'A high-quality smartphone with amazing features.', price: '$499', image: 'https://via.placeholder.com/300' },
-    2: { name: 'Laptop', description: 'A powerful laptop for all your needs.', price: '$899', image: 'https://via.placeholder.com/300' },
-    3: { name: 'Headphones', description: 'Noise-cancelling headphones with premium sound quality.', price: '$199', image: 'https://via.placeholder.com/300' },
-    4: { name: 'Smartwatch', description: 'A sleek smartwatch with fitness tracking features.', price: '$299', image: 'https://via.placeholder.com/300' },
-  };
+  useEffect(() => {
+    const allProducts = [];
+    for (let i = 0; i < localStorage.length; i++) {
+      const key = localStorage.key(i);
+      if (key && key.startsWith("product_")) {
+        const product = JSON.parse(localStorage.getItem(key));
+        allProducts.push({ ...product, id: key.replace("product_", "") });
+      }
+    }
+    setProducts(allProducts);
+    setIsLoading(false);
+  }, []);
 
-  const product = productDetails[id]; 
-
-  if (!product) {
-    return <p>Product not found!</p>;
+  if (isLoading) {
+    return <p>Loading products...</p>;
   }
 
   return (
-    <div className="product-detail-page">
-      <div className="product-detail">
-        <img src={product.image} alt={product.name} />
-        <div className="product-info">
-          <h1>{product.name}</h1>
-          <p>{product.description}</p>
-          <p className="price">{product.price}</p>
+    <div className="product-list">
+      <h1>Product Listings</h1>
+      {products.length === 0 ? (
+        <p>No products found!</p>
+      ) : (
+        <div className="products">
+          {products.map((product) => (
+            <div key={product.id} className="product-card">
+              <img
+                src={product.images.length ? product.images[0] : 'https://via.placeholder.com/150'}
+                alt={product.title}
+                className="product-image"
+              />
+              <div className="product-info">
+                <h2>{product.title}</h2>
+                <p>{product.description}</p>
+                <p><strong>Price:</strong> ${product.price}</p>
+                <Link to={`/product/${product.id}`} className="view-detail-btn">View Details</Link>
+              </div>
+            </div>
+          ))}
         </div>
-      </div>
-
-      <button onClick={() => navigate("/Product")}>Back to Products</button>
+      )}
     </div>
   );
 };

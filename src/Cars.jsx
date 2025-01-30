@@ -21,7 +21,7 @@ const Cars = () => {
     const fetchCars = async () => {
       setLoading(true);
       try {
-        const response = await axios.get("http://localhost:3000/api/products");
+        const response = await axios.get("https://nearby-market-backend.onrender.com/products");
         const carProducts = response.data.filter((product) => product.category === "Cars");
         setCars(carProducts);
         setLoading(false);

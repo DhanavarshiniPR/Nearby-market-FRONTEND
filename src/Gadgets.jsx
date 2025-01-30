@@ -18,7 +18,7 @@ const Gadgets = () => {
       setLoading(true);
       try {
         // Fixed the double slash in the URL
-        const response = await axios.get("http://localhost:3000/api/products/category/Gadgets");
+        const response = await axios.get("https://nearby-market-backend.onrender.com/Gadgets");
         const gadgetProducts = response.data.filter((product) => product.category === "Gadgets");
         setGadgets(gadgetProducts);  // Directly set the fetched products
       } catch (err) {

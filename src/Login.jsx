@@ -14,7 +14,7 @@ const Login = () => {
     e.preventDefault();
 
     try {
-      const response = await axios.post("http://localhost:3000/login", {
+      const response = await axios.post("https://nearby-market-backend.onrender.com/login", {
         email, // Send email instead of username
         password,
       });
