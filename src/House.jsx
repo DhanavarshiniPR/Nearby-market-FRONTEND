@@ -100,7 +100,7 @@ const House = () => {
         )}
       </div>
 
-      {isModalOpen && <PaymentModal house={selectedHouse} onClose={handleCloseModal} />}
+      {isModalOpen && <PaymentModal item={selectedHouse} onClose={handleCloseModal} />}
     </div>
   );
 };

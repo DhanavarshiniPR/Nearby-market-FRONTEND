@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import PaymentModal from "./PaymentModal"; // Import PaymentModal
 import "./Cars.css";
 
 const carData = [
-  { id: 1, name: "Tesla Model S", price: "$80,000", image: "https://media.autoexpress.co.uk/image/private/s--_4ro-Cun--/f_auto,t_primary-image-desktop@1/v1689934611/autoexpress/2023/07/Tesla%20Model%20S%20Plaid%20001_yujihf.jpg" },
-  { id: 2, name: "BMW X5", price: "$70,000", image: "https://images.moneycontrol.com/static-mcnews/2024/03/Holding-image-1-770x433.jpg?impolicy=website&width=770&height=431" },
-  { id: 3, name: "Mercedes-Benz C-Class", price: "$65,000", image: "https://stimg.cardekho.com/images/carexteriorimages/630x420/Mercedes-Benz/C-Class/10858/Mercedes-Benz-C-Class-C-200/1720160050225/front-left-side-47.jpg?tr=w-664" },
-  { id: 4, name: "Audi A6", price: "$60,000", image: "https://upload.wikimedia.org/wikipedia/commons/8/82/2018_Audi_A6_Sport_40_TDi_S-A_2.0.jpg" },
+  { id: 1, name: "Tesla Model S", price: "$80,000", image: "https://greencarscompare.com/upload/resize_cache/iblock/af8/1100_618_2/683f5zoi0e5wpubzns7nxn1ic7rsxp1o.png" },
+  { id: 2, name: "BMW M5", price: "$105,000", image: "https://stimg.cardekho.com/images/carexteriorimages/630x420/BMW/M5-2025/11821/1719462197562/front-left-side-47.jpg?tr=w-664" },
+  { id: 3, name: "Audi A8", price: "$90,000", image: "https://motoringworld.in/wp-content/uploads/2022/11/2022-Audi-A8-L-web4.jpg" },
+  { id: 4, name: "Mercedes-Benz S-Class", price: "$115,000", image: "https://images.autox.com/uploads/2021/07/2021-Mercedes-Benz-S-Class-Front-Quarter-Motion.jpg" },
 ];
 
 const Cars = () => {
@@ -15,6 +16,8 @@ const Cars = () => {
   const [cars, setCars] = useState(carData); // Use carData initially
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [isModalOpen, setModalOpen] = useState(false); // State to control the modal
+  const [selectedCar, setSelectedCar] = useState(null); // State to store the selected car
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -35,9 +38,19 @@ const Cars = () => {
     fetchCars();
   }, []);
 
+  const handleBuyNow = (car) => {
+    setSelectedCar(car); // Set selected car
+    setModalOpen(true); // Open modal
+  };
+
+  const handleCloseModal = () => {
+    setModalOpen(false); // Close modal
+    setSelectedCar(null); // Clear selected car
+  };
+
   return (
     <div className="car-container">
-      {/* Toggle Button for Navigation */}
+      {/* Button to toggle the navigation */}
       <button className="nav-toggle-btn" onClick={() => setNavOpen(!isNavOpen)}>
         ☰ Menu
       </button>
@@ -73,7 +86,9 @@ const Cars = () => {
                 <img src={car.image} alt={car.name} />
                 <h3>{car.name}</h3>
                 <p>{car.price}</p>
-                <button className="buy-btn">Buy Now</button>
+                <button className="buy-btn" onClick={() => handleBuyNow(car)}>
+                  Buy Now
+                </button>
               </div>
             ))
           ) : (
@@ -81,6 +96,11 @@ const Cars = () => {
           )}
         </div>
       </div>
+
+      {/* Payment Modal */}
+      {isModalOpen && (
+        <PaymentModal car={selectedCar} onClose={handleCloseModal} />
+      )}
     </div>
   );
 };

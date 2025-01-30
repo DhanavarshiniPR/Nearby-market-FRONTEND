@@ -37,32 +37,17 @@ const Login = () => {
     <div className="container">
       <nav className="navbar purple-background">
         <div className="logo">LocalCommunityMarketPlace</div>
-        <div className="search-bar">
-          <input type="text" placeholder="Search for anything" />
-          <select>
-            <option>All Categories</option>
-            <option>Electronics</option>
-            <option>Fashion</option>
-            <option>Home & Garden</option>
-            <option>Sports</option>
-          </select>
-          <button>Search</button>
-        </div>
+       
         <div className="auth-buttons">
           <button className="login-btn" onClick={() => navigate("/login")}>
             Login
           </button>
-          <button className="sell-btn">Sell</button>
+          <button className="sell-btn" onClick={() => navigate("/sell")}>Sell</button>
+
         </div>
       </nav>
 
-      <div className="nav-links purple-background">
-        <a href="/">Home</a>
-        <a href="#">About Us</a>
-        <a href="#">Contact</a>
-        <a href="#">Offers</a>
-      </div>
-
+      
       <div className="login-container">
         <h2>Login</h2>
         <form onSubmit={handleLogin}>
@@ -99,15 +84,7 @@ const Login = () => {
         </div>
       </div>
 
-      {/* Footer */}
-      <footer className="footer purple-background">
-        <p>© 2025 LocalCommunityMarketPlace. All rights reserved.</p>
-        <div className="footer-links">
-          <a href="#">Privacy Policy</a>
-          <a href="#">Terms of Service</a>
-          <a href="#">Help Center</a>
-        </div>
-      </footer>
+      
     </div>
   );
 };

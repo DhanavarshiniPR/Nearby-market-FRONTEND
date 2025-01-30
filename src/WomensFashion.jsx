@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import PaymentModal from "./PaymentModal";
+import PaymentModal from "./PaymentModal"; // Ensure this import is correct
 import "./WomensFashion.css";
 
 const initialFashionItems = [
@@ -83,17 +83,20 @@ const WomensFashion = () => {
               <img src={item.image || item.images[0]} alt={item.title} />
               <h3>{item.title}</h3>
               <p>{item.price}</p>
-              <button className="buy-btn" onClick={() => handleBuyNow(item)}>
+              <button onClick={() => handleBuyNow(item)} className="buy-btn">
                 Buy Now
               </button>
             </div>
           ))
         ) : (
-          !loading && <p>No fashion items available at the moment.</p>
+          <p>No fashion items available at the moment.</p>
         )}
       </div>
 
-      {isModalOpen && <PaymentModal item={selectedItem} onClose={handleCloseModal} />}
+     {/* Payment Modal */}
+     {isModalOpen && (
+        <PaymentModal car={selectedWomensFashion} onClose={handleCloseModal} />
+      )}
     </div>
   );
 };

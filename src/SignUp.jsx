@@ -40,32 +40,17 @@ const SignUp = () => {
       <nav className="navbar">
         <div className="logo">LocalCommunityMarketPlace</div>
 
-        <div className="search-bar">
-          <input type="text" placeholder="Search for anything" />
-          <select>
-            <option>All Categories</option>
-            <option>Electronics</option>
-            <option>Fashion</option>
-            <option>Home & Garden</option>
-            <option>Sports</option>
-          </select>
-          <button>Search</button>
-        </div>
+      
 
         <div className="auth-buttons">
           <button className="login-btn" onClick={() => navigate("/login")}>
             Login
           </button>
-          <button className="sell-btn">Sell</button>
+          <button className="sell-btn" onClick={() => navigate("/sell")}>Sell</button>
+
         </div>
       </nav>
 
-      <div className="nav-links">
-        <a href="/">Home</a>
-        <a href="#">About Us</a>
-        <a href="#">Contact</a>
-        <a href="#">Offers</a>
-      </div>
 
       <div className="signup-container">
         <h2>Sign Up</h2>
@@ -105,14 +90,7 @@ const SignUp = () => {
         </form>
       </div>
 
-      <footer className="footer">
-        <p>&copy; 2025 LocalCommunityMarketPlace. All Rights Reserved.</p>
-        <div className="footer-links">
-          <a href="#">Privacy Policy</a>
-          <a href="#">Terms of Service</a>
-          <a href="#">Contact Us</a>
-        </div>
-      </footer>
+   
     </div>
   );
 };

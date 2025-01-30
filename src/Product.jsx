@@ -1,52 +1,47 @@
-import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import "./Product.css";  // Customize the CSS file as needed
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import './Product.css';
 
 const Product = () => {
   const [products, setProducts] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const navigate = useNavigate();
 
   useEffect(() => {
+    // Fetch all the products from localStorage
     const allProducts = [];
     for (let i = 0; i < localStorage.length; i++) {
       const key = localStorage.key(i);
-      if (key && key.startsWith("product_")) {
+      if (key.startsWith("product_")) {
         const product = JSON.parse(localStorage.getItem(key));
-        allProducts.push({ ...product, id: key.replace("product_", "") });
+        allProducts.push({ id: key.split('_')[1], ...product });
       }
     }
     setProducts(allProducts);
-    setIsLoading(false);
-  }, []);
-
-  if (isLoading) {
-    return <p>Loading products...</p>;
-  }
+  }, []);  // Empty dependency array ensures this effect runs once when the component mounts
 
   return (
-    <div className="product-list">
-      <h1>Product Listings</h1>
-      {products.length === 0 ? (
-        <p>No products found!</p>
-      ) : (
-        <div className="products">
-          {products.map((product) => (
-            <div key={product.id} className="product-card">
-              <img
-                src={product.images.length ? product.images[0] : 'https://via.placeholder.com/150'}
-                alt={product.title}
-                className="product-image"
-              />
-              <div className="product-info">
-                <h2>{product.title}</h2>
-                <p>{product.description}</p>
-                <p><strong>Price:</strong> ${product.price}</p>
-                <Link to={`/product/${product.id}`} className="view-detail-btn">View Details</Link>
-              </div>
+    <div className="products-container">
+      <button className="home-button" onClick={() => navigate("/")}>Home</button>
+
+      <h1>Our Products</h1>
+      <div className="products-list">
+        {products.length === 0 ? (
+          <p>No products available.</p>
+        ) : (
+          products.map((product) => (
+            <div
+              key={product.id}
+              className="product-card"
+              onClick={() => navigate(`/product/${product.id}`)}  // Navigate to Product Detail page
+            >
+             
+              <h2>{product.title}</h2>
+              <p>{product.category}</p>
+              <p className="price">${product.price}</p>
             </div>
-          ))}
-        </div>
-      )}
+          ))
+        )}
+      </div>
     </div>
   );
 };

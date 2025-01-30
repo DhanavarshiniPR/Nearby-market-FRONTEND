@@ -63,18 +63,11 @@ const Marketing = () => {
         </div>
       </div>
 
-      <footer className="footer">
-        <div className="footer-container">
-          <p>&copy; {new Date().getFullYear()} NEARBY-MARKET. All rights reserved.</p>
-          <div className="footer-links">
-            <a href="#" onClick={() => navigate("/privacy")}>Privacy Policy</a>
-            <a href="#" onClick={() => navigate("/terms")}>Terms of Service</a>
-            <a href="#" onClick={() => navigate("/contactus")}>Contact Us</a>
-          </div>
-        </div>
-      </footer>
+      
+      
     </div>
   );
 };
 
 export default Marketing;
+ 

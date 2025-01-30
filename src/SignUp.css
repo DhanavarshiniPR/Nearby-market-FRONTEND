@@ -46,8 +46,8 @@
   .signup-btn {
     width: 100%;
     padding: 12px;
-    background-color: #da96e0;
-    color: rgb(106, 68, 117);
+    background-color: #8c2dbb;
+    color: rgb(246, 240, 248);
     border: none;
     border-radius: 4px;
     font-size: 16px;
@@ -55,7 +55,7 @@
   }
   
   .signup-btn:hover {
-    background-color: #d965dd;
+    background-color: #7a42e7;
   }
   
   .login-prompt {

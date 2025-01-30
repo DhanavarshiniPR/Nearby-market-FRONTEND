@@ -11,17 +11,7 @@ const AboutUs = () => {
       <nav className="navbar">
         <div className="logo">LocalCommunityMarketPlace</div>
 
-        <div className="search-bar">
-          <input type="text" placeholder="Search for anything" />
-          <select>
-            <option>All Categories</option>
-            <option>Electronics</option>
-            <option>Fashion</option>
-            <option>Home & Garden</option>
-            <option>Sports</option>
-          </select>
-          <button>Search</button>
-        </div>
+       
 
         <div className="auth-buttons">
           <button className="login-btn" onClick={() => navigate("/login")}>
@@ -30,7 +20,8 @@ const AboutUs = () => {
           <button className="signup-btn" onClick={() => navigate("/signup")}>
             Sign Up
           </button>
-          <button className="sell-btn">Sell</button>
+          <button className="sell-btn" onClick={() => navigate("/sell")}>Sell</button>
+
         </div>
       </nav>
 

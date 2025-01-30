@@ -16,7 +16,7 @@ const Sell = () => {
     images: [],
   });
   const [imagePreviews, setImagePreviews] = useState([]);
-  const [submitted, setSubmitted] = useState(false);
+  const [submitted, setSubmitted] = useState(false); // State for success message
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -25,17 +25,27 @@ const Sell = () => {
 
   const handleImageUpload = (e) => {
     const files = Array.from(e.target.files);
-    const fileURLs = files.map((file) => URL.createObjectURL(file));
+    const fileURLs = files.map((file) => URL.createObjectURL(file));  // Generate object URLs for the images
 
-    setProduct({ ...product, images: [...product.images, ...files] });
+    setProduct({ ...product, images: [...product.images, ...fileURLs] });
     setImagePreviews([...imagePreviews, ...fileURLs]);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const productId = new Date().getTime(); // Unique ID based on timestamp
+    // Generate a unique ID based on the current timestamp
+    const productId = new Date().getTime(); // Unique ID
+    
+    // Save product details to localStorage with the generated ID
     localStorage.setItem(`product_${productId}`, JSON.stringify(product));
-    setSubmitted(true); 
+    
+    // Set the success message
+    setSubmitted(true);
+    
+    // Refresh the Product page automatically after the form submission
+    setTimeout(() => {
+      navigate("/product");  // This will navigate to the products page
+    }, 2000);  // 2 seconds delay to show the success message
   };
 
   return (
@@ -47,7 +57,6 @@ const Sell = () => {
         <div className="success-message">
           <h2>🎉 Product Submitted Successfully!</h2>
           <p>Your product has been listed successfully. Thank you!</p>
-          <button className="back-btn" onClick={() => navigate("/")}>Back to Home</button>
         </div>
       ) : (
         <form className="sell-form" onSubmit={handleSubmit}>

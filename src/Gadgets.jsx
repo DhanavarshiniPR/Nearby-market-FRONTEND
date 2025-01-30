@@ -4,9 +4,16 @@ import axios from "axios";
 import PaymentModal from "./PaymentModal";
 import "./Gadgets.css";
 
+const initialGadgets = [
+  { id: 1, title: "Apple MacBook Pro", price: "$2,000", image: "https://dukaan.b-cdn.net/700x700/webp/media/e8896897-d7ad-4264-969c-2c3972deba79.jpg" },
+  { id: 2, title: "Samsung Galaxy Tab", price: "$800", image: "https://images.samsung.com/is/image/samsung/p6pim/in/sm-x710nzaainu/gallery/in-galaxy-tab-s9-wifi-x710-sm-x710nzaainu-537885425?$684_547_JPG$" },
+  { id: 3, title: "Sony WH-1000XM5", price: "$400", image: "https://images.fonearena.com/blog/wp-content/uploads/2024/09/Sony-WH-1000XM5-Headphones-and-WF-1000XM5-Earbuds-Smoky-Pink-1024x561.jpg" },
+  { id: 4, title: "Apple Watch Series 9", price: "$500", image: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/watch-card-40-s9-202309?wid=1200&hei=1500&fmt=jpeg&qlt=95&.v=1692732084730" }
+];
+
 const Gadgets = () => {
   const [isNavOpen, setNavOpen] = useState(false);
-  const [gadgets, setGadgets] = useState([]);  // Start with an empty array
+  const [gadgets, setGadgets] = useState(initialGadgets);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -17,10 +24,9 @@ const Gadgets = () => {
     const fetchGadgets = async () => {
       setLoading(true);
       try {
-        // Fixed the double slash in the URL
-        const response = await axios.get("https://nearby-market-backend.onrender.com/Gadgets");
+        const response = await axios.get("http://localhost:3000/api/products");
         const gadgetProducts = response.data.filter((product) => product.category === "Gadgets");
-        setGadgets(gadgetProducts);  // Directly set the fetched products
+        setGadgets((prevGadgets) => [...prevGadgets, ...gadgetProducts]);
       } catch (err) {
         console.error("Error fetching gadgets:", err);
         setError("Failed to load gadgets. Please try again.");
@@ -68,7 +74,7 @@ const Gadgets = () => {
       <div className="gadgets-grid">
         {gadgets.length > 0 ? (
           gadgets.map((gadget) => (
-            <div key={gadget._id} className="gadget-card"> {/* Use _id as key */}
+            <div key={gadget.id || gadget._id} className="gadget-card">
               <img src={gadget.image || "default-gadget-image.jpg"} alt={gadget.title} />
               <h3>{gadget.title}</h3>
               <p>{gadget.price}</p>
