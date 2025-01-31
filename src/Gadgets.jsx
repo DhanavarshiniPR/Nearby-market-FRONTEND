@@ -24,7 +24,7 @@ const Gadgets = () => {
     const fetchGadgets = async () => {
       setLoading(true);
       try {
-        const response = await axios.get("http://localhost:3000/api/products");
+        const response = await axios.get("https://nearby-market-backend-1.onrender.com/api/products");
         const gadgetProducts = response.data.filter((product) => product.category === "Gadgets");
         setGadgets((prevGadgets) => [...prevGadgets, ...gadgetProducts]);
       } catch (err) {

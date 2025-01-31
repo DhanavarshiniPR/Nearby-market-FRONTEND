@@ -24,7 +24,7 @@ const WomensFashion = () => {
     const fetchFashionItems = async () => {
       setLoading(true);
       try {
-        const response = await axios.get("https://nearby-market-backend.onrender.com/products");
+        const response = await axios.get("https://nearby-market-backend-1.onrender.com/products");
         const fashionProducts = response.data.filter(
           (product) => product.category === "Women's Fashion"
         );

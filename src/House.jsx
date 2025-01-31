@@ -32,7 +32,7 @@ const House = () => {
   useEffect(() => {
     const fetchHouseData = async () => {
       try {
-        const response = await axios.get("https://nearby-market-backend.onrender.com/products");
+        const response = await axios.get("https://nearby-market-backend-1.onrender.com/products");
         const houses = response.data.filter((product) => product.category === "House");
         setHouseData([...predefinedHouses, ...houses]);
         setLoading(false);
